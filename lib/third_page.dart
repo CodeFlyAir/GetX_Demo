@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_demo/controllers/list_controller.dart';
 import 'package:getx_demo/controllers/tap_controller.dart';
 import 'package:getx_demo/home_page.dart';
 
@@ -9,6 +10,7 @@ class ThirdPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TapController controller = Get.find();
+    ListController listController = Get.find();
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -99,6 +101,24 @@ class ThirdPage extends StatelessWidget {
               child: Center(
                   child: Text(
                 "Total",
+                style: TextStyle(fontSize: 20, color: Colors.white),
+              )),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Get.find<ListController>().setValues(Get.find<TapController>().z);
+            },
+            child: Container(
+              margin: const EdgeInsets.all(20),
+              width: double.maxFinite,
+              height: 100,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Color(0xFF89dad0)),
+              child: Center(
+                  child: Text(
+                "Save Total",
                 style: TextStyle(fontSize: 20, color: Colors.white),
               )),
             ),
